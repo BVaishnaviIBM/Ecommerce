@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-
+using Microsoft.AspNetCore.Http;
 using ECommerce.Business.Services;
 using ECommerce.Models.Entities;
 
@@ -122,6 +122,30 @@ namespace ECommerce.API.Controllers
                 id);
 
             return NoContent();
+        }
+        [HttpPost("bulk-upload")]
+        public async Task<IActionResult> BulkUpload(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest("Please upload an Excel file.");
+            }
+
+            if (!Path.GetExtension(file.FileName)
+                .Equals(".xlsx", StringComparison.OrdinalIgnoreCase))
+            {
+                return BadRequest("Only .xlsx Excel files are allowed.");
+            }
+
+            using var stream = file.OpenReadStream();
+
+            var count = await _productService.BulkAddProductsAsync(stream);
+
+            return Ok(new
+            {
+                Message = "Products uploaded successfully.",
+                ProductsAdded = count
+            });
         }
     }
 }
