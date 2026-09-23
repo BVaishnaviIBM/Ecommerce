@@ -45,9 +45,21 @@ namespace ECommerce.DataAccess.Repositories
             await _context.SaveChangesAsync();
         }
 
+
         public async Task UpdateItemAsync(CartItem cartItem)
         {
-            _context.CartItems.Update(cartItem);
+            var existingItem = await _context.CartItems
+                .FirstOrDefaultAsync(
+                    item => item.CartItemId == cartItem.CartItemId);
+
+            if (existingItem == null)
+            {
+                throw new KeyNotFoundException(
+                    $"Cart item with ID {cartItem.CartItemId} was not found.");
+            }
+
+            existingItem.Quantity = cartItem.Quantity;
+
             await _context.SaveChangesAsync();
         }
 

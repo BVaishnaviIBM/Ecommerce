@@ -1,0 +1,242 @@
+
+/* ---------- Global styles ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+    color: #1f2937;
+}
+
+h2 {
+    margin-top: 20px;
+    margin-bottom: 24px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+/* ---------- Navigation ---------- */
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 18px 24px;
+    background: #172554;
+    color: white;
+}
+
+    nav a {
+        color: white;
+        font-weight: 600;
+    }
+
+    nav button {
+        margin: 0;
+        background: #dc2626;
+    }
+
+        nav button:hover {
+            background: #b91c1c;
+        }
+
+/* ---------- Main page containers ---------- */
+
+.products-container,
+.cart-container,
+.orders-container,
+.register-container,
+.login-container {
+    width: min(1100px, 92%);
+    margin: 30px auto;
+}
+
+.register-container,
+.login-container {
+    max-width: 450px;
+    padding: 28px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Forms and inputs ---------- */
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: 2px solid #93c5fd;
+        border-color: #2563eb;
+    }
+
+label {
+    font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+
+button {
+    padding: 10px 18px;
+    margin: 6px 4px 6px 0;
+    border: none;
+    border-radius: 6px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+    button:hover {
+        background: #1d4ed8;
+    }
+
+    button:disabled {
+        background: #94a3b8;
+        cursor: not-allowed;
+    }
+
+/* ---------- Product cards ---------- */
+
+.products-list,
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+    margin-top: 24px;
+}
+
+.product-card {
+    padding: 22px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .product-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 7px 20px rgba(0, 0, 0, 0.09);
+    }
+
+    .product-card h3 {
+        margin-top: 0;
+    }
+
+/* ---------- Cart and order cards ---------- */
+
+.cart-item,
+.order-card,
+.order-details {
+    margin: 18px 0;
+    padding: 22px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.order-details {
+    margin-top: 28px;
+}
+
+    .cart-item p,
+    .order-card p,
+    .order-details p {
+        margin: 8px 0;
+    }
+
+/* ---------- Search ---------- */
+
+.search-input {
+    max-width: 500px;
+    display: block;
+    margin: 16px 0;
+}
+
+/* ---------- Messages ---------- */
+
+.success-message {
+    padding: 12px;
+    color: #166534;
+    background: #dcfce7;
+    border-radius: 6px;
+}
+
+.error-message {
+    padding: 12px;
+    color: #991b1b;
+    background: #fee2e2;
+    border-radius: 6px;
+}
+
+/* ---------- Responsive layout ---------- */
+
+@media (max-width: 600px) {
+    nav {
+        gap: 8px;
+        padding: 14px 10px;
+    }
+
+    .products-container,
+    .cart-container,
+    .orders-container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .register-container,
+    .login-container {
+        width: 94%;
+        padding: 20px;
+    }
+
+    .products-list,
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}

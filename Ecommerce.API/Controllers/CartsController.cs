@@ -1,4 +1,5 @@
 ﻿using ECommerce.Business.Services;
+using ECommerce.Models.DTOs;
 using ECommerce.Models.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -128,21 +129,23 @@ namespace ECommerce.API.Controllers
             return Ok(cartItem);
         }
 
+
         [HttpPut("items/{id}")]
         public async Task<ActionResult<CartItem>> UpdateItem(
             int id,
-            CartItem cartItem)
+            UpdateCartItemRequest request)
         {
-            if (id != cartItem.CartItemId)
-            {
-                return BadRequest();
-            }
-
-            if (cartItem.Quantity <= 0)
+            if (request.Quantity <= 0)
             {
                 return BadRequest(
                     "Quantity must be greater than zero.");
             }
+
+            var cartItem = new CartItem
+            {
+                CartItemId = id,
+                Quantity = request.Quantity
+            };
 
             _logger.LogInformation(
                 "Updating CartItemId: {CartItemId} to Quantity: {Quantity}",
