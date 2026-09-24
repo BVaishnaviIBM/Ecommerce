@@ -10,13 +10,7 @@ function Orders() {
     const [detailsLoading, setDetailsLoading] = useState(false);
     const [notification, setNotification] = useState("");
 
-    {
-        notification && (
-            <p className="success-message" role="status">
-                {notification}
-            </p>
-        )
-    }
+    
 
     useEffect(() => {
         let connection;
@@ -29,6 +23,7 @@ function Orders() {
                     .build();
 
                 connection.on("OrderUpdated", (orderId, status) => {
+                    console.log("OrderUpdated EVENT RECEIVED:", orderId, status);
                     setNotification(
                         `Order #${orderId} has been updated. Status: ${status}`
                     );
@@ -151,6 +146,11 @@ function Orders() {
 
     return (
         <div className="orders-container">
+            {notification && (
+                <p className="success-message" role="status">
+                    {notification}
+                </p>
+            )}
             <h2>My Orders</h2>
 
             {message && <p role="alert">{message}</p>}
