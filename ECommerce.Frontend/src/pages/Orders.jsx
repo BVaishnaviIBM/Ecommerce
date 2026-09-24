@@ -1,4 +1,4 @@
-
+import { HubConnectionBuilder } from "@microsoft/signalr";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -8,6 +8,47 @@ function Orders() {
     const [message, setMessage] = useState("");
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [detailsLoading, setDetailsLoading] = useState(false);
+    const [notification, setNotification] = useState("");
+
+    {
+        notification && (
+            <p className="success-message" role="status">
+                {notification}
+            </p>
+        )
+    }
+
+    useEffect(() => {
+        let connection;
+
+        const connectToOrderHub = async () => {
+            try {
+                connection = new HubConnectionBuilder()
+                    .withUrl("https://localhost:7248/orderHub")
+                    .withAutomaticReconnect()
+                    .build();
+
+                connection.on("OrderUpdated", (orderId, status) => {
+                    setNotification(
+                        `Order #${orderId} has been updated. Status: ${status}`
+                    );
+                });
+
+                await connection.start();
+                console.log("Connected to OrderHub");
+            } catch (error) {
+                console.error("SignalR connection failed:", error);
+            }
+        };
+
+        connectToOrderHub();
+
+        return () => {
+            if (connection) {
+                connection.stop();
+            }
+        };
+    }, []);
 
     useEffect(() => {
         let isMounted = true;
@@ -205,5 +246,6 @@ function Orders() {
         </div>
     );
 }
+
 
 export default Orders;

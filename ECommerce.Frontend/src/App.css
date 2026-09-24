@@ -239,4 +239,26 @@ button {
     button {
         max-width: 100%;
     }
+
+    .checkout-section,
+    .payment-details {
+        margin-top: 24px;
+        padding: 20px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+    }
+
+        .checkout-section label {
+            display: block;
+            margin: 12px 0 6px;
+        }
+
+        .checkout-section select {
+            display: block;
+            padding: 10px;
+            margin-bottom: 12px;
+            min-width: 200px;
+            border: 1px solid #9ca3af;
+            border-radius: 6px;
+        }
 }
