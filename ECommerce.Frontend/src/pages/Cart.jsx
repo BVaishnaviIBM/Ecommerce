@@ -17,24 +17,26 @@ function Cart() {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
     });
 
-    const fetchCart = async () => {
-        try {
-            const response = await axios.get(`${API_URL}/Carts`, {
-                headers: getHeaders(),
-            });
-
-            setCart(response.data);
-            setMessage("");
-        } catch (error) {
-            console.error("Error fetching cart:", error);
-            setMessage("Unable to load cart.");
-        } finally {
-            setLoading(false);
-        }
-    };
-
     useEffect(() => {
-        fetchCart();
+        const loadCart = async () => {
+            try {
+                const response = await axios.get(`${API_URL}/Carts`, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                });
+
+                setCart(response.data);
+                setMessage("");
+            } catch (error) {
+                console.error("Error fetching cart:", error);
+                setMessage("Unable to load cart.");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadCart();
     }, []);
 
     const refreshCart = async () => {
