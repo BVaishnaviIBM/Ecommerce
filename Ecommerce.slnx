@@ -4,4 +4,21 @@
   <Project Path="ECommerce.DataAccess/ECommerce.DataAccess.csproj" />
   <Project Path="ECommerce.Models/ECommerce.Models.csproj" />
   <Project Path="ECommerce.Tests/ECommerce.Tests.csproj" />
+  <Project Path="ECommerceGateway/ECommerceGateway.csproj" Id="d73d541b-654b-4b5a-a0dc-750c789745e7" />
+  <Project Path="OrderService.API/OrderService.API.csproj" Id="ad885015-02ba-4635-8da2-1cf0cd5a2271" />
+  <Project Path="OrderService.Business/OrderService.Business.csproj" Id="05c53f38-2062-4351-89a9-fed09ec51291" />
+  <Project Path="OrderService.DataAccess/OrderService.DataAccess.csproj" Id="3e397ba2-4196-405c-8a2b-b3d265d52347" />
+  <Project Path="OrderService.Models/OrderService.Models.csproj" Id="ad7fb364-7994-45e9-9ea6-00156d3ab19d" />
+  <Project Path="PaymentService.API/PaymentService.API.csproj" Id="ed60c870-e74b-431f-9ee3-d330e3bd23fe" />
+  <Project Path="PaymentService.Business/PaymentService.Business.csproj" Id="700aeca8-b52d-4648-8d0c-c925a36cd71a" />
+  <Project Path="PaymentService.DataAccess/PaymentService.DataAccess.csproj" Id="0770d7b4-bd83-4511-b4f2-b2b542d65a00" />
+  <Project Path="PaymentService.Models/PaymentService.Models.csproj" Id="f240459a-01be-4f9d-be90-8051becd6230" />
+  <Project Path="ProductService.API/ProductService.API.csproj" Id="e8087dc8-b4df-46aa-a1a0-3d2d22e4de4d" />
+  <Project Path="ProductService.Business/ProductService.Business.csproj" Id="2b6ed875-d685-4ecc-8b6c-60281f976888" />
+  <Project Path="ProductService.DataAccess/ProductService.DataAccess.csproj" Id="16c61045-77d5-4392-b411-7d49f49dc12d" />
+  <Project Path="ProductService.Models/ProductService.Models.csproj" Id="b5741fba-fce7-49a9-a519-9706cda45012" />
+  <Project Path="UserService.API/UserService.API.csproj" Id="addedd81-df25-46eb-ba37-e6a8c7dbe67c" />
+  <Project Path="UserService.Business/UserService.Business.csproj" Id="c8a32220-aec4-455b-b10a-b39193ed685c" />
+  <Project Path="UserService.DataAccess/UserService.DataAccess.csproj" Id="dd8ab0e1-7613-41c1-9cc0-be35a0cac531" />
+  <Project Path="UserService.Models/UserService.Models.csproj" Id="656227f8-34f5-4e60-aa44-97355cefe576" />
 </Solution>

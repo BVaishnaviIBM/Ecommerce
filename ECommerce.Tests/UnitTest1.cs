@@ -30,9 +30,13 @@ namespace ECommerce.Tests
                 .Setup(r => r.GetByIdAsync(1))
                 .ReturnsAsync(product);
 
+            var mockInventoryRepository = new Mock<IInventoryRepository>();
+
             var service = new ProductService(
-    mockRepository.Object,
-    new MemoryCache(new MemoryCacheOptions()));
+                mockRepository.Object,
+                mockInventoryRepository.Object,
+                new MemoryCache(new MemoryCacheOptions())
+            );
 
             // Act
             var result = await service.GetProductByIdAsync(1);
@@ -53,9 +57,13 @@ namespace ECommerce.Tests
                 .Setup(r => r.GetByIdAsync(99))
                 .ReturnsAsync((Product?)null);
 
+            var mockInventoryRepository = new Mock<IInventoryRepository>();
+
             var service = new ProductService(
-    mockRepository.Object,
-    new MemoryCache(new MemoryCacheOptions()));
+                mockRepository.Object,
+                mockInventoryRepository.Object,
+                new MemoryCache(new MemoryCacheOptions())
+            );
 
             // Act
             var result = await service.GetProductByIdAsync(99);
@@ -89,9 +97,13 @@ namespace ECommerce.Tests
                 .Setup(r => r.GetAllAsync())
                 .ReturnsAsync(products);
 
+            var mockInventoryRepository = new Mock<IInventoryRepository>();
+
             var service = new ProductService(
-    mockRepository.Object,
-    new MemoryCache(new MemoryCacheOptions()));
+                mockRepository.Object,
+                mockInventoryRepository.Object,
+                new MemoryCache(new MemoryCacheOptions())
+            );
 
             // Act
             var result = await service.GetAllProductsAsync();

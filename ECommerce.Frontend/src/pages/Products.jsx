@@ -43,17 +43,28 @@ function Products() {
         );
     });
 
-    // Add a product to the cart
+    
     const handleAddToCart = async (productId) => {
         setMessage("");
 
         try {
             const token = localStorage.getItem("token");
 
+            const cartResponse = await axios.get(
+                "https://localhost:7248/api/Carts",
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            const cartId = cartResponse.data.cartId;
+
             await axios.post(
                 "https://localhost:7248/api/Carts/items",
                 {
-                    cartId: 2,
+                    cartId: cartId,
                     productId: productId,
                     quantity: 1,
                 },
@@ -63,6 +74,8 @@ function Products() {
                     },
                 }
             );
+
+
 
             setMessage("Product added to cart successfully!");
         } catch (error) {
